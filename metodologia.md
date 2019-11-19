@@ -1,4 +1,6 @@
-### Metodologia
+## Metodologia
+
+### Alunos: Enzo Vinicius Haguiwara e Daniel Machado Pintos
 
 Acessar o site dos dados abertos de Curitiba
 https://www.curitiba.pr.gov.br/dadosabertos/busca/?grupo=12
