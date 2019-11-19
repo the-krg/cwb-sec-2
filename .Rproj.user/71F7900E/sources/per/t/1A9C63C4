@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1573912023490.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1A9C63C4",
+    "lastKnownWriteTime" : 4121129147529428992,
+    "last_content_update" : 1573912023490,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "D312F2F6",
+        "caption" : "por_bairro",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=por_bairro&cache_key=D312F2F6",
+        "displayedObservations" : 100,
+        "environment" : "",
+        "expression" : "por_bairro",
+        "object" : "por_bairro",
+        "preview" : 0,
+        "totalObservations" : 100,
+        "variables" : 1
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
