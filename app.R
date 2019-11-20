@@ -41,7 +41,7 @@ ui <- fluidPage(
 
     mainPanel(
        plotlyOutput("barBairros"),
-       plotlyOutput("PieOrigChamados"),
+       plotlyOutput("pieOrigChamados"),
        plotlyOutput("linePerYear"),
        plotlyOutput("barDias")
     )
@@ -63,15 +63,16 @@ server <- function(input, output) {
     
     output$linePerYear <- renderPlotly({
         plot_ly(aux, x = ~Var1, y = ~Freq2015, name='2015', type='scatter', mode='lines')%>%
-            add_trace(y = ~Freq2016, name = '2016', line = list(color = 'rgb(201)', width = 4)) %>%
-            add_trace(y = ~Freq2017, name = '2017', line = list(color = 'rgb(22, 96, 167)', width = 4)) %>%
-            add_trace(y = ~Freq2018, name = '2018', line = list(color = 'rgb(22, 96, 167)', width = 4)) %>%
-            add_trace(y = ~Freq2019, name = '2019', line = list(color = 'rgb(22, 96, 167)', width = 4)) %>%
+            add_trace(y = ~Freq2016, name = '2016', line = list(color = 'rgb(0, 0, 255)', width = 4)) %>%
+            add_trace(y = ~Freq2017, name = '2017', line = list(color = 'rgb(255, 0, 0)', width = 4)) %>%
+            add_trace(y = ~Freq2018, name = '2018', line = list(color = 'rgb(0, 255, 0)', width = 4)) %>%
+            add_trace(y = ~Freq2019, name = '2019', line = list(color = 'rgb(255, 0, 255)', width = 4)) %>%
             layout(title = 'Número de Ocorrencias por Ano')
     })
     
     output$pieOrigChamados <- renderPlotly({
-        plot_ly(origChamado, labels = ~Var1, values = ~Freq, type = 'pie')
+        plot_ly(origChamado, labels = ~Var1, values = ~Freq, type = 'pie')%>%
+            layout(title = 'Origem dos chamados')
     })
 }
 
