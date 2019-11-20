@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "975016792",
+    "hash" : "1804013627",
     "id" : "24383C4F",
-    "lastKnownWriteTime" : 1574221504,
-    "last_content_update" : 1574221504248,
+    "lastKnownWriteTime" : 1574223198,
+    "last_content_update" : 1574223198764,
     "path" : "C:/Users/Danie/AndroidStudioProjects/cwb-sec-2/app.R",
     "project_path" : "app.R",
     "properties" : {
-        "cursorPosition" : "69,6",
-        "scrollLine" : "43"
+        "cursorPosition" : "64,59",
+        "scrollLine" : "46"
     },
     "read_only" : false,
     "read_only_alternatives" : [

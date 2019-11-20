@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574222871541.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "CAB7264E",
+    "lastKnownWriteTime" : 1827992184352,
+    "last_content_update" : 1574222871541,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "7D296563",
+        "caption" : "bonito",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=bonito&cache_key=7D296563",
+        "displayedObservations" : "12",
+        "environment" : "",
+        "expression" : "bonito",
+        "object" : "bonito",
+        "preview" : "0",
+        "totalObservations" : "12",
+        "variables" : "2"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
