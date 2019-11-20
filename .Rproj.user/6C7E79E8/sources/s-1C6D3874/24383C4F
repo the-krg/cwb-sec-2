@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574214672139.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "975016792",
+    "id" : "24383C4F",
+    "lastKnownWriteTime" : 1574221504,
+    "last_content_update" : 1574221504248,
+    "path" : "C:/Users/Danie/AndroidStudioProjects/cwb-sec-2/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "69,6",
+        "scrollLine" : "43"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
