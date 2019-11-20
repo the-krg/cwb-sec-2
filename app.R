@@ -5,6 +5,7 @@ ds <- read.csv('2019-11-01_sigesguarda_-_Base_de_Dados.csv', header = TRUE, sep 
 porBairro <- as.data.frame(summary(ds$ATENDIMENTO_BAIRRO_NOME))
 origChamado <- as.data.frame(table(ds$ORIGEM_CHAMADO_DESCRICAO))
 origChamado <- origChamado[order(origChamado[2], decreasing = TRUE), ]
+meses <- c('JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ')
 
 # linhas: [2015]
 n2015 <- as.data.frame(table(ds[ds$OCORRENCIA_ANO == 2015, "OCORRENCIA_MES"]))
@@ -20,19 +21,23 @@ n2019 <- rbind(n2019, data.frame(Var1="12", Freq=NA))
 # dia
 ocorrencia_por_semana <- as.data.frame(table(ds$OCORRENCIA_DIA_SEMANA))
 
-# renomeação de nomes
+# renomeação de nomes do dataframe
 colnames(n2015)[2] = 'Freq2015' 
 colnames(n2016)[2] = 'Freq2016'
 colnames(n2017)[2] = 'Freq2017'
 colnames(n2018)[2] = 'Freq2018'
 colnames(n2019)[2] = 'Freq2019'
 
+# Junta-se os anos numa variável auxiliar para plotá-los todos juntos
 aux <- merge(n2015,n2016)
 aux <- merge(aux, n2017)
 aux <- merge(aux, n2018)
 aux <- merge(aux, n2019)
 
 aux <- aux[order(aux$Var1),]
+
+# Adiciona os meses ao data-frame
+aux['MES'] <- as.data.frame(meses)
 
 years <- as.data.frame(n2015)
 
@@ -62,12 +67,20 @@ server <- function(input, output) {
     
     
     output$linePerYear <- renderPlotly({
-        plot_ly(aux, x = ~Var1, y = ~Freq2015, name='2015', type='scatter', mode='lines')%>%
+        plot_ly(aux, x = ~MES, y = ~Freq2015, labels = meses, name='2015', width = 4, type='scatter', mode='lines')%>%
             add_trace(y = ~Freq2016, name = '2016', line = list(color = 'rgb(0, 0, 255)', width = 4)) %>%
             add_trace(y = ~Freq2017, name = '2017', line = list(color = 'rgb(255, 0, 0)', width = 4)) %>%
             add_trace(y = ~Freq2018, name = '2018', line = list(color = 'rgb(0, 255, 0)', width = 4)) %>%
             add_trace(y = ~Freq2019, name = '2019', line = list(color = 'rgb(255, 0, 255)', width = 4)) %>%
-            layout(title = 'Número de Ocorrencias por Ano')
+            layout(
+                title = 'Número de Ocorrencias por mês a cada ano', 
+                xaxis = list(
+                    categoryorder = "array", 
+                    categoryarray = aux$MES,
+                    title = "Mês"
+                    ),
+                yaxis = list(title='Frequência')
+            )
     })
     
     output$pieOrigChamados <- renderPlotly({
