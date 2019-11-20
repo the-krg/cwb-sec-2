@@ -19,7 +19,9 @@ n2019 <- rbind(n2019, data.frame(Var1="11", Freq=NA))
 n2019 <- rbind(n2019, data.frame(Var1="12", Freq=NA))
 
 # dia
-ocorrencia_por_semana <- as.data.frame(table(ds$OCORRENCIA_DIA_SEMANA))
+ocorrencia_por_dia <- as.data.frame(table(ds$OCORRENCIA_DIA_SEMANA))
+    #adiciona total
+total_ocorrencias <- sum(ocorrencia_por_dia[,2])
 
 # renomeação de nomes do dataframe
 colnames(n2015)[2] = 'Freq2015' 
@@ -42,13 +44,22 @@ aux['MES'] <- as.data.frame(meses)
 years <- as.data.frame(n2015)
 
 ui <- fluidPage(
-    titlePanel("Segurança em Curitiba - Parte 2"),
+    titlePanel("Segurança em Curitiba - Parte 2 | Alunos: Enzo Vinicius Haguiwara e Daniel Machado Pintos"),
 
     mainPanel(
-       plotlyOutput("barBairros"),
-       plotlyOutput("pieOrigChamados"),
-       plotlyOutput("linePerYear"),
-       plotlyOutput("barDias")
+        h1("Número total de ocorrências registradas por bairro, desde 2015 até novembro de 2019"),
+        h5("Dica: Clique, arraste e solte no gráfico para dar zoom em uma área."),
+        h5("Clique duas vezes no gráfico para retirar o zoom."),
+        plotlyOutput("barBairros"),
+        h1("Percentual de chamados pela origem do chamado."),
+        h5("Dica: Clique em uma das legendas para removê-la da visualização, assim pode-se analisar mais profundamente."),
+        plotlyOutput("pieOrigChamados"),
+        h1("Número de chamados registrados por mês, agrupado por ano, desde 2015 até novembro de 2019"),
+        h5("Dica: Clique em uma das legendas para removê-la da visualização."),
+        plotlyOutput("linePerYear", width = "100%", height = "600px"),
+        h1("Número total decrescente de chamados registrados por dia da semana, desde 2015 até novembro de 2019"),
+        plotlyOutput("barDias"),
+        width = 12
     )
 
 )
@@ -57,12 +68,24 @@ server <- function(input, output) {
 
     output$barBairros <- renderPlotly({
         plot_ly(porBairro, x = porBairro[, 1], y = row.names(porBairro))%>%
-            layout(title = 'Número de ocorrências por bairro')
+            layout(
+                title = 'Número de ocorrências por bairro',
+                yaxis = list(
+                    categoryorder = "array", 
+                    categoryarray = row.names(porBairro),
+                    title = "Nome do Bairro"
+                )
+            )
     })
     
     output$barDias <- renderPlotly({
-        plot_ly(porBairro, x = ocorrencia_por_semana[,2], y = ocorrencia_por_semana[,1])%>%
-            layout(title = 'Número de ocorrências por dia')
+        plot_ly(porBairro, y = ocorrencia_por_dia[,2], x = ocorrencia_por_dia[,1])%>%
+            layout(title = 'Número de ocorrências por dia',
+                   xaxis = list(
+                       categoryorder = "total descending", 
+                       categoryarray = ocorrencia_por_dia[,2],
+                       title = "Dia da semana"
+                   ))
     })
     
     
